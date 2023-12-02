@@ -1,9 +1,11 @@
+module "bucket" {
+  source  = "terraform-google-modules/cloud-storage/google//modules/simple_bucket"
+  version = "~> 5.0"
 
-resource "google_storage_bucket" "bucket" {
-  name                        = "${var.project_id}-gcf-source"
-  location                    = "US"
-  uniform_bucket_level_access = true
-  project                     = var.project_id
+  name       = "${var.project_id}-gcf-source"
+  project_id = var.project_id
+  location   = "us-east1"
+  
 }
 
 resource "google_storage_bucket_object" "function-source" {

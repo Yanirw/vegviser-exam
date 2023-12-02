@@ -1,9 +1,8 @@
-resource "google_pubsub_topic" "exam_pubsub" {
-  name = "${var.project_id}-topic"
+module "pubsub" {
+  source  = "terraform-google-modules/pubsub/google"
+  version = "~> 6.0"
 
-  labels = {
-    foo = "bar"
-  }
+  topic      = "vegviser-topic"
+  project_id = var.project_id
 
-  message_retention_duration = "86600s"
 }

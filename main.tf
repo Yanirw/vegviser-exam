@@ -18,8 +18,7 @@ module "cloud-endpoints" {
 }
 
 module "cloud-functions" {
-  source = "./modules/cloud-functions"
-
+  source            = "./modules/cloud-functions"
   project_id        = var.project_id
   function_name     = var.function_name
   function_location = var.function_location
@@ -27,6 +26,6 @@ module "cloud-functions" {
 }
 
 module "pubsub_module" {
-  source            = "./modules/pubsub"
-  project_id        = var.project_id
+  source     = "./modules/pubsub"
+  project_id = var.project_id
 }

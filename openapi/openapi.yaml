@@ -1,27 +1,22 @@
-swagger: "2.0"
+swagger: '2.0'
 info:
-  title: "Airport Codes"
-  description: "Get the name of an airport from its three-letter IATA code."
-  version: "1.0.0"
-# replaced 1st argument with project name
+  title: test-name-spec
+  description: Sample API on API Gateway with a Google Cloud Functions backend
+  version: 1.0.0
 host: "vegvizer-exam.appspot.com"
 schemes:
-  - "https"
+  - https
+produces:
+  - application/json
 paths:
-  "/airportName":
+  /hello:
     get:
-      description: "Get the airport name for a given IATA code."
-      operationId: "airportName"
-      parameters:
-        -
-          name: iataCode
-          in: query
-          required: true
-          type: string
+      summary: Greet a user
+      operationId: hello
+      # x-google-backend:
+      #   address:
       responses:
-        200:
-          description: "Success."
+        '200':
+          description: A successful response
           schema:
             type: string
-        400:
-          description: "The IATA code is invalid or missing."
