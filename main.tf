@@ -9,6 +9,10 @@ terraform {
     prefix = "terraform/state"
   }
 }
+module "gcp_api_module" {
+  source = "./modules/gcp-api"  
+  project_id = var.project_id
+}
 
 module "cloud-endpoints" {
   source         = "./modules/cloud-endpoints"
@@ -25,7 +29,7 @@ module "cloud-functions" {
 
 }
 
-module "pubsub_module" {
+module "pubsub" {
   source     = "./modules/pubsub"
   project_id = var.project_id
 }

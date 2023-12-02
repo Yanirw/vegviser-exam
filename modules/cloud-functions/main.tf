@@ -1,7 +1,6 @@
 module "bucket" {
   source  = "terraform-google-modules/cloud-storage/google//modules/simple_bucket"
   version = "~> 5.0"
-
   name       = "${var.project_id}-gcf-source"
   project_id = var.project_id
   location   = "us-east1"
@@ -10,7 +9,7 @@ module "bucket" {
 
 resource "google_storage_bucket_object" "function-source" {
   name   = "sample_function_py.zip"
-  bucket = google_storage_bucket.bucket.name
+  bucket = module.bucket.name 
   source = "./sample_function_py/sample_function_py.zip"
 }
 module "cloud_functions2" {
@@ -21,7 +20,7 @@ module "cloud_functions2" {
   runtime           = "python38"
   entrypoint        = "hello_http"
   storage_source = {
-    bucket     = google_storage_bucket.bucket.name
+    bucket     = module.bucket.name 
     object     = google_storage_bucket_object.function-source.name
     generation = null
   }

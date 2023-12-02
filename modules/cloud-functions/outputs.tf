@@ -18,3 +18,8 @@ output "project_id" {
   value       = var.project_id
   description = "The project ID"
 }
+
+output "name" {
+  description = "Bucket name."
+  value       = module.bucket.name
+}
