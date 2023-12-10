@@ -13,8 +13,8 @@ paths:
     get:
       summary: Greet a user
       operationId: hello
-      # x-google-backend:
-      #   address:
+      x-google-backend:
+        address: "https://us-east1-vegvizer-exam.cloudfunctions.net/function2-gcs-source-py"
       responses:
         '200':
           description: A successful response

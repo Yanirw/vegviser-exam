@@ -1,3 +1,3 @@
-output "topic_name" {
-  value       = module.pubsub.topic
-}
+# output "topic_name" {
+#   value       = module.pubsub.topic
+# }

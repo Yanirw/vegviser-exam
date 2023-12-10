@@ -6,6 +6,6 @@ output "project_id" {
   value = var.project_id
 }
 
-output "topic_name" {
-  value       = module.pubsub.topic_name
-}
+# output "topic_name" {
+#   value = module.pubsub.topic_name
+# }

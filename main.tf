@@ -10,15 +10,8 @@ terraform {
   }
 }
 module "gcp_api_module" {
-  source = "./modules/gcp-api"  
+  source     = "./modules/gcp-api"
   project_id = var.project_id
-}
-
-module "cloud-endpoints" {
-  source         = "./modules/cloud-endpoints"
-  project_id     = var.project_id
-  openapi_config = var.openapi_config
-
 }
 
 module "cloud-functions" {
@@ -29,8 +22,17 @@ module "cloud-functions" {
 
 }
 
+module "cloud-endpoints" {
+  source         = "./modules/cloud-endpoints"
+  project_id     = var.project_id
+  openapi_config = var.openapi_config
+  depends_on     = [module.cloud-functions]
+
+
+}
+
 module "pubsub" {
   source     = "./modules/pubsub"
   project_id = var.project_id
-  topic      = var.topic
+  topics     = var.topics
 }
